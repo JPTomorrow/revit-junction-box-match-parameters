@@ -2,13 +2,10 @@ using System.Collections.Generic;
 using System.Linq;
 using Autodesk.Revit.DB;
 using JPMorrow.Revit.Documents;
-using JPMorrow.Revit.Tools;
-using JPMorrow.Tools.Diagnostics;
-using JPMorrow.Tools.Revit;
 
 namespace JPMorrow.JBox
 {
-	public class JBox
+    public class JBox
 	{
 		public int ConnectionCount { get; private set; }
 		public ElementId BoxId { get; private set; }

@@ -9,15 +9,9 @@
 using System;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.DB;
-using Autodesk.Revit.UI.Selection;
 using System.Collections.Generic;
 using System.Linq;
-using JPMorrow.Tools.Revit.MEP;
-using System.Text.RegularExpressions;
 using JPMorrow.Tools.Diagnostics;
-using JPMorrow.Custom.Revit.Documents;
-using JPMorrow.Tools.Revit;
-using JPMorrow.JBox;
 using JPMorrow.Revit.Documents;
 using JBox = JPMorrow.JBox.JBox;
 
@@ -29,11 +23,11 @@ namespace MainApp
 	{
 		public Result Execute(ExternalCommandData cData, ref string message, ElementSet elements)
         {
-			//set revit documents
-			ModelInfo info = ModelInfo.StoreDocuments(cData);
+			var dataDirectories = new string[0];
+			var debugApp = false;
 
-			//spool up search system
-			MepSystemSearchCustom mssc = new MepSystemSearchCustom();
+			//set revit documents
+			ModelInfo info = ModelInfo.StoreDocuments(cData, dataDirectories, debugApp);
 
 			List<ElementId> jboxes = info.UIDOC.Selection.GetElementIds().ToList();
 
@@ -142,25 +136,5 @@ namespace MainApp
 														"pushed to thier associated conduit runs.");
 			return Result.Succeeded;
         }
-
-		#region startup
-		private void Module_Startup(object sender, EventArgs e)
-		{
-
-		}
-
-		private void Module_Shutdown(object sender, EventArgs e)
-		{
-
-		}
-		#endregion
-
-		#region Revit Macros generated code
-		private void InternalStartup()
-		{
-			this.Startup += new System.EventHandler(Module_Startup);
-			this.Shutdown += new System.EventHandler(Module_Shutdown);
-		}
-		#endregion
 	}
 }
