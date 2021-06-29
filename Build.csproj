@@ -47,7 +47,7 @@
     <RevitVersion>2020</RevitVersion>
   </PropertyGroup>
 
-  <PropertyGroup Condition="$(RevitYearArg.Contains('2020'))">
+  <PropertyGroup Condition="$(RevitYearArg.Contains('2021'))">
     <LangVersion>8.0</LangVersion>
     <DefineConstants>$(DefineConstants);NETFRAMEWORK47</DefineConstants>
     <TargetFramework>net48</TargetFramework>
